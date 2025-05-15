@@ -23,9 +23,8 @@ public class Estudiante {
         if (hechizosAprendidos.contains(hechizo)) {
             throw new HechizoYaAprendidoException("El estudiante ya ha aprendido este hechizo.");
         }
-        Nivel hechizonivel = hechizo.getNivel();
 
-        if (Nivel.nivelToInt(nivel) < Nivel.nivelToInt(hechizonivel)) {
+        if (this.getNivel().nivelToInt() < hechizo.getNivel().nivelToInt()) {
             throw new NivelInsuficienteException(
                     "El estudiante no tiene el nivel necesario para aprender este hechizo.");
         }

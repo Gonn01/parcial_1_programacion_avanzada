@@ -15,20 +15,8 @@ public enum Nivel {
         return nombre;
     }
 
-    public static int nivelToInt(Nivel nivel) {
-        switch (nivel) {
-            case PRINCIPIANTE:
-                return 1;
-            case INTERMEDIO:
-                return 2;
-            case AVANZADO:
-                return 3;
-            case MAESTRO:
-                return 4;
-            case LEYENDA:
-                return 5;
-            default:
-                return 0;
-        }
+    public int nivelToInt() {
+        return this.ordinal();
     }
+
 }

@@ -21,17 +21,4 @@ public class Hechizo {
     public Elementos getElemento() {
         return elemento;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof Hechizo) {
-            return ((Hechizo) obj).nombre.equals(this.nombre);
-        }
-        return false;
-    }
-
-    @Override
-    public int hashCode() {
-        return nombre.hashCode();
-    }
 }

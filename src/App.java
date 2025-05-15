@@ -65,10 +65,9 @@ public class App {
             for (int i = 0; i < hechizos.size(); i++) {
                 Hechizo hechizo = hechizos.get(i);
                 System.out.println((i + 1) + ") " + hechizo.getNombre() + ", "
-                        + hechizo.getElemento() + "(" + (estudiante.getHechizosAprendidos().contains(hechizo)
-                                ? "Aprendido"
-                                : "No aprendido")
-                        + ")");
+                        + hechizo.getElemento().getNombre() + " (" +
+                        (estudiante.getHechizosAprendidos().contains(hechizo) ? "Aprendido" : "No aprendido") + ")");
+
             }
             System.out.println("0) Salir");
 
@@ -91,13 +90,18 @@ public class App {
                 continue;
             }
 
+            Hechizo hechizoSeleccionado = hechizos.get(opcion - 1);
+            Aprendizaje intento = new Aprendizaje(estudiante, hechizoSeleccionado);
+
             try {
-                estudiante.aprenderHechizo(hechizos.get(opcion - 1));
+                intento.intentarAprender();
                 System.out.println("¡Hechizo aprendido con éxito!");
             } catch (NivelInsuficienteException | HechizoYaAprendidoException e) {
                 System.out.println("Error: " + e.getMessage());
             }
+
         }
+        Aprendizaje.mostrarHistorial();
 
         scanner.close();
     }
