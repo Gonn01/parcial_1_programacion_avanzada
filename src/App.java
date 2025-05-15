@@ -61,7 +61,7 @@ public class App {
         Estudiante estudiante = new Estudiante(nombreEst, edad, nivelSeleccionado);
 
         while (true) {
-            System.out.println("\nHechizos disponibles:");
+            System.out.println("Hechizos disponibles:");
             for (int i = 0; i < hechizos.size(); i++) {
                 Hechizo hechizo = hechizos.get(i);
                 System.out.println((i + 1) + ") " + hechizo.getNombre() + ", "

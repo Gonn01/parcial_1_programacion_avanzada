@@ -1,7 +1,6 @@
-// Hechizo.java
 public class Hechizo {
     private String nombre;
-    private Nivel nivelRequerido; // básico, intermedio, avanzado
+    private Nivel nivelRequerido;
     private Elementos elemento;
 
     public Hechizo(String nombre, Nivel nivelRequerido, Elementos elemento) {
