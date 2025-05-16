@@ -7,13 +7,11 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Registrar director
         System.out.print("Ingrese nombre del director: ");
         String nombreDirector = scanner.nextLine();
         Director director = Director.getInstancia(nombreDirector);
         System.out.println("Director registrado: " + director.getNombre());
 
-        // Registro de hechizos
         List<Hechizo> hechizos = new ArrayList<>();
 
         hechizos.add(new Hechizo("Kamehameha", Nivel.PRINCIPIANTE, Elementos.LUZ));
@@ -38,7 +36,6 @@ public class App {
             if (nombreHechizo.equalsIgnoreCase("salir"))
                 break;
 
-            // Niveles disponibles
             System.out.println("Niveles disponibles:");
             for (int i = 0; i < Nivel.values().length; i++) {
                 System.out.println((i + 1) + ") " + Nivel.values()[i].getNombre());
@@ -60,7 +57,6 @@ public class App {
                 }
             }
 
-            // Elementos disponibles
             System.out.println("Elementos disponibles:");
             for (int i = 0; i < Elementos.values().length; i++) {
                 System.out.println((i + 1) + ") " + Elementos.values()[i].getNombre());
@@ -86,7 +82,6 @@ public class App {
             System.out.println("Hechizo registrado con éxito.\n");
         }
 
-        // Registro de estudiantes
         List<Estudiante> estudiantes = new ArrayList<>();
         System.out.println("\n--- Registro de estudiantes ---");
         while (true) {
@@ -137,7 +132,6 @@ public class App {
             return;
         }
 
-        // Seleccionar un estudiante
         System.out.println("\n--- Selección de estudiante ---");
         for (int i = 0; i < estudiantes.size(); i++) {
             Estudiante e = estudiantes.get(i);
@@ -161,7 +155,6 @@ public class App {
             }
         }
 
-        // Intentar aprender hechizos
         while (true) {
             System.out.println("\n--- Hechizos disponibles ---");
             for (int i = 0; i < hechizos.size(); i++) {
@@ -202,7 +195,6 @@ public class App {
             }
         }
 
-        // Mostrar historial
         Aprendizaje.mostrarHistorial();
         scanner.close();
     }
