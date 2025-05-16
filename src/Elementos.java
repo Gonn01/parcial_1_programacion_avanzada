@@ -1,9 +1,14 @@
 public enum Elementos {
     FUEGO("Fuego"),
     AGUA("Agua"),
-    TIERRA("Tierra");
+    TIERRA("Tierra"),
+    AIRE("Aire"),
+    LUZ("Luz"),
+    OSCURIDAD("Oscuridad"),
+    ELECTRICIDAD("Electricidad"),
+    ENERGIA_PURA("Energía Pura");
 
-    private String nombre;
+    private final String nombre;
 
     Elementos(String nombre) {
         this.nombre = nombre;
