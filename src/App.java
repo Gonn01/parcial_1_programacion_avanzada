@@ -10,7 +10,7 @@ public class App {
         System.out.print("Ingrese nombre del director: ");
         String nombreDirector = scanner.nextLine();
         Director director = Director.getInstancia(nombreDirector);
-        System.out.println("Director registrado: " + director.getNombre());
+        System.out.println("Director registrado: " + director.getNombre() + "\n");
 
         List<Hechizo> hechizos = new ArrayList<>();
 
@@ -25,65 +25,65 @@ public class App {
         hechizos.add(new Hechizo("Death Beam", Nivel.AVANZADO, Elementos.OSCURIDAD));
         hechizos.add(new Hechizo("Supernova", Nivel.LEYENDA, Elementos.ENERGIA_PURA));
 
-        System.out.println("\n--- Registro de hechizos ---");
+        System.out.println("--- Registro de hechizos ---\n");
         while (true) {
-            System.out.println("Lista de hechizos predeterminados:");
+            System.out.println("Lista de hechizos predeterminados:\n ");
             for (Hechizo hechizo : hechizos) {
                 System.out.println(hechizo.getNombre() + " - " + hechizo.getElemento().getNombre());
             }
-            System.out.print("Nombre del hechizo (o escriba 'salir' para terminar): ");
+            System.out.print("\nNombre del hechizo (o escriba 'salir' para terminar): ");
             String nombreHechizo = scanner.nextLine();
             if (nombreHechizo.equalsIgnoreCase("salir"))
                 break;
 
-            System.out.println("Niveles disponibles:");
+            System.out.println("\nNiveles disponibles: \n");
             for (int i = 0; i < Nivel.values().length; i++) {
                 System.out.println((i + 1) + ") " + Nivel.values()[i].getNombre());
             }
 
             Nivel nivelHechizo = null;
             while (true) {
-                System.out.print("Seleccione el nivel del hechizo (1-" + Nivel.values().length + "): ");
+                System.out.print("\nSeleccione el nivel del hechizo (1-" + Nivel.values().length + "): ");
                 try {
                     int nivelInput = Integer.parseInt(scanner.nextLine());
                     if (nivelInput >= 1 && nivelInput <= Nivel.values().length) {
                         nivelHechizo = Nivel.values()[nivelInput - 1];
                         break;
                     } else {
-                        System.out.println("Nivel fuera de rango.");
+                        System.out.println("Nivel fuera de rango. \n");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ingrese un número válido.");
+                    System.out.println("Ingrese un número válido. \n");
                 }
             }
 
-            System.out.println("Elementos disponibles:");
+            System.out.println("\n Elementos disponibles: \n");
             for (int i = 0; i < Elementos.values().length; i++) {
                 System.out.println((i + 1) + ") " + Elementos.values()[i].getNombre());
             }
 
             Elementos elementoHechizo = null;
             while (true) {
-                System.out.print("Seleccione el elemento del hechizo (1-" + Elementos.values().length + "): ");
+                System.out.print("\nSeleccione el elemento del hechizo (1-" + Elementos.values().length + "): ");
                 try {
                     int elementoInput = Integer.parseInt(scanner.nextLine());
                     if (elementoInput >= 1 && elementoInput <= Elementos.values().length) {
                         elementoHechizo = Elementos.values()[elementoInput - 1];
                         break;
                     } else {
-                        System.out.println("Elemento fuera de rango.");
+                        System.out.println("Elemento fuera de rango. \n");
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ingrese un número válido.");
+                    System.out.println("Ingrese un número válido. \n");
                 }
             }
 
             hechizos.add(new Hechizo(nombreHechizo, nivelHechizo, elementoHechizo));
-            System.out.println("Hechizo registrado con éxito.\n");
+            System.out.println("Hechizo registrado con éxito. \n");
         }
 
         List<Estudiante> estudiantes = new ArrayList<>();
-        System.out.println("\n--- Registro de estudiantes ---");
+        System.out.println("\n --- Registro de estudiantes --- \n");
         while (true) {
             System.out.print("Nombre del estudiante (o escriba 'salir' para terminar): ");
             String nombreEst = scanner.nextLine();
@@ -97,18 +97,18 @@ public class App {
                     edad = Integer.parseInt(scanner.nextLine());
                     break;
                 } catch (NumberFormatException e) {
-                    System.out.println("Ingrese un número válido para la edad.");
+                    System.out.println("Ingrese un número válido para la edad. \n");
                 }
             }
 
-            System.out.println("Niveles disponibles:");
+            System.out.println("\nNiveles disponibles: \n");
             for (int i = 0; i < Nivel.values().length; i++) {
                 System.out.println((i + 1) + ") " + Nivel.values()[i].getNombre());
             }
 
             Nivel nivelSeleccionado = null;
             while (true) {
-                System.out.print("Seleccione el nivel (1-" + Nivel.values().length + "): ");
+                System.out.print("\nSeleccione el nivel (1-" + Nivel.values().length + "): ");
                 try {
                     int nivelInput = Integer.parseInt(scanner.nextLine());
                     if (nivelInput >= 1 && nivelInput <= Nivel.values().length) {
@@ -123,79 +123,84 @@ public class App {
             }
 
             estudiantes.add(new Estudiante(nombreEst, edad, nivelSeleccionado));
-            System.out.println("Estudiante registrado con éxito.\n");
+            System.out.println("\nEstudiante registrado con éxito.\n");
         }
 
         if (estudiantes.isEmpty()) {
-            System.out.println("No hay estudiantes registrados. Cerrando el programa.");
+            System.out.println("No hay estudiantes registrados. Cerrando el programa. \n");
             scanner.close();
             return;
         }
 
-        System.out.println("\n--- Selección de estudiante ---");
-        for (int i = 0; i < estudiantes.size(); i++) {
-            Estudiante e = estudiantes.get(i);
-            System.out.println((i + 1) + ") " + e.getNombre() + " (Edad: " + e.getEdad() + ", Nivel: "
-                    + e.getNivel().getNombre() + ")");
-        }
-
-        Estudiante estudiante = null;
         while (true) {
-            System.out.print("Ingrese el número del estudiante: ");
-            try {
-                int seleccion = Integer.parseInt(scanner.nextLine());
-                if (seleccion >= 1 && seleccion <= estudiantes.size()) {
-                    estudiante = estudiantes.get(seleccion - 1);
-                    break;
-                } else {
-                    System.out.println("Número fuera de rango.");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Ingrese un número válido.");
-            }
-        }
-
-        while (true) {
-            System.out.println("\n--- Hechizos disponibles ---");
-            for (int i = 0; i < hechizos.size(); i++) {
-                Hechizo hechizo = hechizos.get(i);
-                System.out.println((i + 1) + ") " + hechizo.getNombre() + ", "
-                        + hechizo.getElemento().getNombre() + " (" +
-                        (estudiante.getHechizosAprendidos().contains(hechizo) ? "Aprendido" : "No aprendido") + ")");
+            System.out.println("\n--- Selección de estudiante --- \n");
+            for (int i = 0; i < estudiantes.size(); i++) {
+                Estudiante e = estudiantes.get(i);
+                System.out.println((i + 1) + ") " + e.getNombre() + " (Edad: " + e.getEdad() + ", Nivel: "
+                        + e.getNivel().getNombre() + ")");
             }
             System.out.println("0) Salir");
 
-            int opcion;
-            try {
-                System.out.print("Ingrese el número del hechizo a aprender: ");
-                opcion = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Ingrese un número válido.");
-                continue;
+            Estudiante estudiante = null;
+            while (true) {
+                System.out.print("\nIngrese el número del estudiante: ");
+                try {
+                    int seleccion = Integer.parseInt(scanner.nextLine());
+                    if (seleccion == 0) {
+                        System.out.println("\nCerrando el programa... \n");
+                        Aprendizaje.mostrarHistorial();
+                        scanner.close();
+                        return;
+                    } else if (seleccion >= 1 && seleccion <= estudiantes.size()) {
+                        estudiante = estudiantes.get(seleccion - 1);
+                        break;
+                    } else {
+                        System.out.println("Número fuera de rango. \n");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Ingrese un número válido. \n");
+                }
             }
 
-            if (opcion == 0) {
-                System.out.println("Cerrando el programa...");
-                break;
-            }
+            while (true) {
+                System.out.println("\n--- Hechizos disponibles para " + estudiante.getNombre() + " ---\n");
+                for (int i = 0; i < hechizos.size(); i++) {
+                    Hechizo hechizo = hechizos.get(i);
+                    System.out.println((i + 1) + ") " + hechizo.getNombre() + ", "
+                            + hechizo.getElemento().getNombre() + " (" +
+                            (estudiante.getHechizosAprendidos().contains(hechizo) ? "Aprendido" : "No aprendido")
+                            + ")");
+                }
+                System.out.println("0) Cambiar de estudiante");
 
-            if (opcion < 1 || opcion > hechizos.size()) {
-                System.out.println("Opción inválida.");
-                continue;
-            }
+                int opcion;
+                try {
+                    System.out.print("\nIngrese el número del hechizo a aprender: ");
+                    opcion = Integer.parseInt(scanner.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("Ingrese un número válido. \n");
+                    continue;
+                }
 
-            Hechizo hechizoSeleccionado = hechizos.get(opcion - 1);
-            Aprendizaje intento = new Aprendizaje(estudiante, hechizoSeleccionado);
+                if (opcion == 0) {
+                    break; // salir al menú de selección de estudiante
+                }
 
-            try {
-                intento.intentarAprender();
-                System.out.println("¡Hechizo aprendido con éxito!");
-            } catch (NivelInsuficienteException | HechizoYaAprendidoException e) {
-                System.out.println("Error: " + e.getMessage());
+                if (opcion < 1 || opcion > hechizos.size()) {
+                    System.out.println("Opción inválida. \n");
+                    continue;
+                }
+
+                Hechizo hechizoSeleccionado = hechizos.get(opcion - 1);
+                Aprendizaje intento = new Aprendizaje(estudiante, hechizoSeleccionado);
+
+                try {
+                    intento.intentarAprender();
+                    System.out.println("¡Hechizo aprendido con éxito! \n");
+                } catch (NivelInsuficienteException | HechizoYaAprendidoException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
             }
         }
-
-        Aprendizaje.mostrarHistorial();
-        scanner.close();
     }
 }
