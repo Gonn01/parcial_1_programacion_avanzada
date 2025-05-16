@@ -183,7 +183,7 @@ public class App {
                 }
 
                 if (opcion == 0) {
-                    break; // salir al menú de selección de estudiante
+                    break;
                 }
 
                 if (opcion < 1 || opcion > hechizos.size()) {
